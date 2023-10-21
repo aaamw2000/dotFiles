@@ -80,11 +80,11 @@ set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 
-" key mappings
+"---- key mappings ----
 
 inoremap jj <Esc>
 
-" vim-plug plugins
+"---- vim-plug plugins ----
 
 call plug#begin()
 " The default plugin directory will be as follows:
