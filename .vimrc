@@ -75,17 +75,32 @@ set wildmenu
 " Make wildmenu behave like similar to Bash completion.
 set wildmode=list:longest
 
+" There are certain files that we would never want to edit with Vim.
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 
-"---- key mappings ----
+" key mappings
 
+" Insert mode maps
 inoremap jj <Esc>
 
-"---- vim-plug plugins ----
+" Normal mode maps
+nnoremap <Space> <C-d>
+nnoremap <Tab> 30l
+
+" vim-plug plugins
 
 call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
 
 " Vim emmet
 Plug 'mattn/emmet-vim'
@@ -96,4 +111,9 @@ Plug 'lervag/vimtex'
 " Vim linter of sorts
 Plug 'dense-analysis/ale'
 
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off   " Disable file-type-specific indentation
+"   syntax off            " Disable syntax highlighting
