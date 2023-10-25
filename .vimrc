@@ -88,6 +88,11 @@ inoremap jj <Esc>
 " Normal mode maps
 nnoremap <Space> <C-d>
 nnoremap <Tab> 30l
+nnoremap <C-_> :Commentary<cr>
+
+" Enable autocompleteion:
+set wildmode=longest,list,full
+
 
 " vim-plug plugins
 
@@ -110,6 +115,12 @@ Plug 'lervag/vimtex'
 
 " Vim linter of sorts
 Plug 'dense-analysis/ale'
+
+" Vim YouCompleteMe for autocompletion
+Plug 'ycm-core/YouCompleteMe'
+
+" Vim commenting
+Plug 'tpope/vim-commentary'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
