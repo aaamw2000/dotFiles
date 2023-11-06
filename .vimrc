@@ -89,6 +89,9 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " key mappings
 
+" Terminal commands
+autocmd BufWritePost *.tex silent! execute"!pdflatex --interaction=batchmode <afile>" | redraw!
+
 " Insert mode maps
 inoremap jk <Esc>
 inoremap <C-r> <C-u>
