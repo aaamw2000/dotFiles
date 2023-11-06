@@ -2,6 +2,9 @@
 
 "---- Settings -----
 
+" Set leader key
+let mapleader = ","
+
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -13,12 +16,16 @@ filetype plugin on
 
 " Load an indent file for the detected file type.
 filetype indent on
+set autoindent
 
 " Turn syntax highlighting on.
 syntax on
 
 " Add numbers to the file.
 set number
+
+" Make line numbers relative to current line
+set relativenumber
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
@@ -83,12 +90,24 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " key mappings
 
 " Insert mode maps
-inoremap jj <Esc>
+inoremap jk <Esc>
+inoremap <C-r> <C-u>
 
 " Normal mode maps
 nnoremap <Space> <C-d>
-nnoremap <Tab> 30l
+nnoremap <BS> <C-u>
+nnoremap <Tab> 4l
 nnoremap <C-_> :Commentary<cr>
+nnoremap bb bi
+nnoremap zz <C-w><C-w>
+nnoremap <S-H> 0
+nnoremap <S-L> $
+inoremap <C-r> <C-u>
+
+" Visual mode maps
+vnoremap jk <Esc>
+vnoremap <C-_> :Commentary<cr>
+
 
 " Enable autocompleteion:
 set wildmode=longest,list,full
@@ -121,6 +140,12 @@ Plug 'ycm-core/YouCompleteMe'
 
 " Vim commenting
 Plug 'tpope/vim-commentary'
+
+" Vim status bar
+Plug 'vim-airline/vim-airline'
+
+" Vim preview colors in session
+Plug 'ap/vim-css-color'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
