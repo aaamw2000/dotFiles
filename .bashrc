@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# fortune
+
 # There are 3 different types of shells in bash: the login shell, normal shell
 # and interactive shell. Login shells read ~/.profile and interactive shells
 # read ~/.bashrc; in our setup, /etc/profile sources ~/.bashrc - thus all

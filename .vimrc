@@ -1,6 +1,7 @@
 " vimrc file
 
-"---- Settings -----
+" Settings
+" -------
 
 " Set leader key
 let mapleader = ","
@@ -8,7 +9,7 @@ let mapleader = ","
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
-" Enable type file detection. Vim will be able to try to detect the type of file is use.
+" Vim will try to detect the type of the file in use
 filetype on
 
 " Enable plugins and load plugin for the detected file type.
@@ -86,26 +87,46 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+" set folding settings
+set foldmethod=indent
+set foldlevel=99
+
+
+
+" Netrw configs
+" ------------
+
+" Keep the current directory and the browsing directory synced
+let g:netrw_keepdir = 0
+
+" Limit Netrw to 30% of the winow
+let g:netrw_winsize = 30
+
 
 " key mappings
+" -----------
 
 " Terminal commands
 autocmd BufWritePost *.tex silent! execute"!pdflatex --interaction=batchmode <afile>" | redraw!
 
 " Insert mode maps
 inoremap jk <Esc>
-inoremap <C-r> <C-u>
 
 " Normal mode maps
 nnoremap <Space> <C-d>
 nnoremap <BS> <C-u>
+nnoremap <Space> <C-d>
 nnoremap <Tab> 4l
-nnoremap <C-_> :Commentary<cr>
-nnoremap bb bi
+nnoremap <silent> <C-_> :Commentary<cr>
+nnoremap <S-b> 0i
 nnoremap zz <C-w><C-w>
-nnoremap <S-H> 0
-nnoremap <S-L> $
-inoremap <C-r> <C-u>
+nnoremap <S-h> 0
+nnoremap <S-l> $
+nnoremap \\ :Lexplore<cr>
+nnoremap df d$
+nnoremap ds d0
+nnoremap ff za
+nnoremap <C-a> ggvG
 
 " Visual mode maps
 vnoremap jk <Esc>
@@ -119,15 +140,6 @@ set wildmode=longest,list,full
 " vim-plug plugins
 
 call plug#begin()
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-
-" Make sure you use single quotes
 
 " Vim emmet
 Plug 'mattn/emmet-vim'
@@ -150,9 +162,4 @@ Plug 'vim-airline/vim-airline'
 " Vim preview colors in session
 Plug 'ap/vim-css-color'
 
-" Initialize plugin system
-" - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
-" You can revert the settings after the call like so:
-"   filetype indent off   " Disable file-type-specific indentation
-"   syntax off            " Disable syntax highlighting

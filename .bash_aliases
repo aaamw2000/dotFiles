@@ -10,9 +10,13 @@ alias inp='sudo zypper refresh; sudo zypper update; sudo zypper install' # insta
 
 alias dim='redshift -P -O 1500' # Dim screen and cancel most of the blue light
 
+alias normal='redshift -P -O 6500' # Get screen brightness back to normal
+
 alias bright='redshift -P -O 20000' # Make the screen bright and increase the blue light
 
 alias dmu='yt-dlp -x' # Download music from youtube using youtube-dlp
+
+alias zat='zathura'
 
 # alias sadd='~/Scripts/bash/section2/add.sh'
 
