@@ -50,7 +50,7 @@ set nobackup
 set scrolloff=10
 
 " Do not wrap lines. Allow long lines to extend as far as the line goes.
-set nowrap
+set wrap
 
 " While searching though a file incrementally highlight matching characters as you type.
 set incsearch
@@ -119,14 +119,18 @@ nnoremap <Space> <C-d>
 nnoremap <Tab> 4l
 nnoremap <silent> <C-_> :Commentary<cr>
 nnoremap <S-b> 0i
-nnoremap zz <C-w><C-w>
 nnoremap <S-h> 0
 nnoremap <S-l> $
-nnoremap \\ :Lexplore<cr>
+nnoremap <C-\> :Lexplore<cr>
+nnoremap <silent> \\ :vsplit<cr>
+nnoremap mm <C-w><C-w>
 nnoremap df d$
 nnoremap ds d0
 nnoremap ff za
 nnoremap <C-a> ggvG
+nnoremap zz :wq<cr>
+nnoremap dw diw
+nnoremap cw ciw
 
 " Visual mode maps
 vnoremap jk <Esc>
