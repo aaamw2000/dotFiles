@@ -1,6 +1,8 @@
+alias nv='nvim'
+
 alias lr='ls -lX --color=auto' # List directory content by file type
 
-alias ls='ls -v --color=auto' # always order numerically
+alias ls='lsd --icon never -v --color=auto' # always order numerically
 
 alias upsys='sudo zypper refresh; sudo zypper dup' # update system
 
@@ -16,10 +18,18 @@ alias bright='redshift -P -O 20000' # Make the screen bright and increase the bl
 
 alias dmu='yt-dlp -x' # Download music from youtube using youtube-dlp
 
-alias zat='zathura'
+alias py='python3'
 
-# alias sadd='~/Scripts/bash/section2/add.sh'
+alias clippy='xclip -sel clip'
 
-# alias sfact='~/Scripts/bash/section2/factorial.sh'
+alias q='vim /home/amr/Txt/questions.txt'
 
-# alias ssum='~/Scripts/bash/section2/sum.sh'
+alias i='vim /home/amr/Txt/ideas.txt'
+
+alias diff='diff -qyr --color=auto'
+
+alias mv='mv -i'
+
+alias ct='cd /home/amr/College/currentTerm'
+
+alias term='feh /home/amr/College/currentTerm/winter2024.png &'
