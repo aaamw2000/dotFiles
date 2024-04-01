@@ -1,0 +1,172 @@
+# setting mod key to Alt
+set $mod Mod1
+
+# start network manager applet
+exec --no-startup-id nm-applet
+exec --no-startup-id flameshot
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id dmenu_run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+# bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+Shift+h split h
+
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+f focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# kill focused window
+bindsym $mod+q kill
+
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+r reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+c restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Up resize grow height 5 px or 5 ppt
+        bindsym Down resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Escape mode "default"
+        bindsym $mod+shift+r mode "default"
+}
+
+bindsym $mod+shift+r mode "resize"
+
+# Start i3blocks to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3blocks
+}
+
+
+# control audio with wireplumberctl
+bindsym $mod+KP_Add exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+bindsym $mod+KP_Subtract exec --no-startup-id "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+bindsym $mod+End exec --no-startup-id "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+
+# My custom stuff
+#---------------
+
+# set gaps
+gaps inner 10
+# no title bar and 2 px window border
+default_border pixel 2
+default_floating_border pixel 2
+
+# key remaps
+#-----------
+
+# Set brightness
+bindsym $mod+Prior exec "brightnessctl set +10%"
+bindsym $mod+Next exec "brightnessctl set 10%-"
+# bindsym $mod+XF86MonBrightnessUp exec "brightnessctl set +10%"
+# bindsym $mod+XF86MonBrightnessDown exec "brightnessctl set 10%-"
+
+## MPV
+
+# open mpv electro playlist
+
+# open mpv rock playlist
+
+# open mpv pop playlist
+
+# pause mpv via local IPC server
+
+# open firefox
+bindsym $mod+space exec --no-startup-id firefox
+bindsym $mod+z exec --no-startup-id firefox "reddit.com/r/linux4noobs/submit" 
+
+bindsym Print exec --no-startup-id xdotool mousemove 1895 1070 click 1
+# bindsym $mod+F12 exec --no-startup-id ~/bin/cam -name 'float'
+for_window [title="webcam"] floating enable
+bindsym $mod+p exec --no-startup-id ~/bin/cam 
+bindsym $mod+i exec --no-startup-id cat $HOME/Txt/creds.txt | dmenu -i | xclip -sel clip && xdotool key ctrl+shift+v
+for_window [class="Notes"] floating enable, resize set 1200 800, move position center
+bindsym $mod+t exec --no-startup-id ls $HOME/Txt | rofi -dmenu -i | xargs -I{} alacritty --class="Notes" -e vim $HOME/Txt/{} &> /tmp/notes-error.txt
+bindsym $mod+s exec /home/amr/Scripts/bash/sched.sh
+# bindsym $mod+t exec --no-startup-id alacritty --class="notes" -e vim $(find $HOME/Txt -type f | fzf)
